@@ -14,6 +14,12 @@ body {
   background: #f3f5f9;
 }
 
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .profile__image {
   object-fit: cover;
   border-radius: 50%;
@@ -23,6 +29,9 @@ body {
 .tech-stack__list {
   list-style: none;
   padding-left: 0;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
 }
 
 .tech-stack__list-item {
