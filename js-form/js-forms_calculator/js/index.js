@@ -22,11 +22,23 @@ function divide(a, b) {
 form.addEventListener("submit", (event) => {
   event.preventDefault();
 
+  const numberA = parseFloat(document.getElementById("number-a").value);
+  const numberB = parseFloat(document.getElementById("number-b").value);
+  const operator = document.querySelector(
+    `input[name="operator"]:checked`
+  ).value;
+
   let result;
 
-  // --v-- write your code here --v--
-
-  // --^-- write your code here --^--
+  if (operator === "addition") {
+    result = add(numberA, numberB);
+  } else if (operator === "subtraction") {
+    result = subtract(numberA, numberB);
+  } else if (operator === "multiplication") {
+    result = multiply(numberA, numberB);
+  } else if (operator === "division") {
+    result = divide(numberA, numberB);
+  }
 
   resultOutput.textContent = result;
 });
