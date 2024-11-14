@@ -5,8 +5,8 @@ const main = document.querySelector('[data-js="main"]');
 // Part 1: Creating a Select Input
 
 const languages = {
-  DE: "German",
   EN: "English",
+  DE: "German",
   ES: "Spanish",
   FR: "French",
   IT: "Italian",
@@ -20,9 +20,12 @@ const select = document.createElement("select");
 select.name = "languages";
 main.append(select);
 
-// --v-- write or modify code below this line --v--
-
-// --^-- write or modify code above this line --^--
+for (const languageOption in languages) {
+  const option = document.createElement("option");
+  option.value = languageOption;
+  option.textContent = languages[languageOption];
+  select.append(option);
+}
 
 // Part 2: Creating a Navigation Bar
 
@@ -37,6 +40,13 @@ const ul = document.createElement("ul");
 main.append(navElement);
 navElement.append(ul);
 
-// --v-- write or modify code below this line --v--
+for (const key in nav) {
+  const li = document.createElement("li");
+  const anchor = document.createElement("a");
 
-// --^-- write or modify code above this line --^--
+  anchor.href = nav[key].href;
+  anchor.textContent = nav[key].text;
+
+  ul.append(li);
+  li.append(anchor);
+}
