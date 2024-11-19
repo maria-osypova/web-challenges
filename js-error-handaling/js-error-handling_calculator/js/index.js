@@ -2,6 +2,7 @@ console.clear();
 
 const form = document.querySelector("form");
 const output = form.querySelector("output");
+const errorElement = document.querySelector(".error");
 
 const operations = {
   add: (a, b) => a + b,
@@ -20,5 +21,11 @@ form.addEventListener("submit", (event) => {
   const firstNumber = Number(event.target.firstNumber.value);
   const secondNumber = Number(event.target.secondNumber.value);
   const operation = event.target.operation.value;
-  output.innerText = operations[operation](firstNumber, secondNumber);
+
+  try {
+    const result = operations[operation](firstNumber, secondNumber);
+    output.innerText = result;
+  } catch (error) {
+    errorElement.innerText = "Please pass a number rather than 0 as divisor";
+  }
 });
