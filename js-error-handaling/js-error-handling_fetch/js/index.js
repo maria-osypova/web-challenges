@@ -7,6 +7,17 @@ const errorElement = document.querySelector("[data-js='error']");
 async function fetchUserData(url) {
   try {
     const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`Not Found: ${response.status}`);
+    }
+    const contentType = response.headers.get("content-type");
+    console.log(contentType);
+
+    if (!contentType || !contentType.includes("application/json")) {
+      throw new Error(
+        `Invalid content-type: Expected application/json but received ${contentType}`
+      );
+    }
 
     return await response.json();
   } catch (error) {
@@ -15,8 +26,8 @@ async function fetchUserData(url) {
 }
 
 const endpoints = [
-  { name: "User 1", url: "https://reqres.in/api/users/1" },
-  { name: "User 2", url: "https://reqres.in/api/users/2" },
+  { name: "User 1", url: "https://reqres.in/api/users/5" },
+  { name: "User 2", url: "https://reqres.in/api/users/3" },
   { name: "User 99", url: "https://reqres.in/api/users/99" },
   { name: "Invalid API link", url: "https://reqres.in" },
 ];
@@ -42,3 +53,6 @@ endpoints.forEach((endpoint) => {
     }
   });
 });
+
+const response = await fetch("https://reqres.in");
+const contentType = response.headers.get("content-type");
