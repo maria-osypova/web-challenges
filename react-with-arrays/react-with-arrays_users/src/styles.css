@@ -31,3 +31,7 @@ body {
   gap: 30px;
   padding: 20px;
 }
+
+ul {
+  list-style: none;
+}
